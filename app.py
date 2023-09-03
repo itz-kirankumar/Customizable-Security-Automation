@@ -33,12 +33,12 @@ use_webcam = st.checkbox('Use Webcam')
 use_ipcam = st.checkbox('Use IP cam')
 if use_ipcam:
     st.write("IP Camera Stream:")
-    st.write("Under Development")
+    st.write("Under Development For Global Deployment")
     stframe = st.empty()
     cap = cv2.VideoCapture("http://100.72.6.11:8080/video")
 elif use_webcam:
     st.write("Webcam Detection:")
-    st.write("Under Development")
+    st.write("Under Development For Global Deployment")
     stframe = st.empty()
     cap = cv2.VideoCapture(0)
 else:
