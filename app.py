@@ -3,10 +3,10 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 from ultralytics import YOLO
-import pygame
+# import pygame
 
 # Initialize pygame mixer
-pygame.mixer.init()
+# pygame.mixer.init()
 
 # Load the pre-trained YOLOv8 model using Ultralytics
 model = YOLO('best.pt')
