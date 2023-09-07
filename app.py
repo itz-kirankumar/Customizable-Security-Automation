@@ -16,11 +16,17 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import datetime
 from datetime import datetime 
-from streamlit.components.v1 import html
+from streamlit.components.v1 import ComponentBase, st_cached
 
+class CameraComponent(ComponentBase):
+    def __init__(self):
+        super().__init__()
 
-# Create a custom component using HTML
-camera_component = html('<div id="camera-container"></div>', height=480)
+    def render(self):
+        return self
+
+# Create an instance of the custom camera component
+camera_component = CameraComponent()
 
 # Display the camera component in your Streamlit app
 st.write(camera_component)
