@@ -7,3 +7,8 @@ torchvision
 ultralytics
 Pillow
 pygame
+secure-smtplib
+twilio
+geocoder
+geopy
+sqlalchemy
