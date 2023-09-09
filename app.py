@@ -15,21 +15,22 @@ from sqlalchemy import create_engine, Column, Integer, String, DateTime, Float
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import datetime
-from datetime import datetime 
-from streamlit.components.v1 import ComponentBase, st_cached
+from datetime import datetime
+pygame.mixer.init() 
+# from streamlit.components.v1 import ComponentBase, st_cached
 
-class CameraComponent(ComponentBase):
-    def __init__(self):
-        super().__init__()
+# class CameraComponent(ComponentBase):
+#     def __init__(self):
+#         super().__init__()
 
-    def render(self):
-        return self
+#     def render(self):
+#         return self
 
-# Create an instance of the custom camera component
-camera_component = CameraComponent()
+# # Create an instance of the custom camera component
+# camera_component = CameraComponent()
 
-# Display the camera component in your Streamlit app
-st.write(camera_component)
+# # Display the camera component in your Streamlit app
+# st.write(camera_component)
 
 
 # Load the pre-trained YOLOv8 model using Ultralytics
@@ -55,11 +56,18 @@ class_list = ["bear", "cat", "cheetah", "cow", "dog", "elephant", "fire", "goat"
 # Multi-select widget for object classes
 selected_classes = st.sidebar.multiselect("Select Object Classes to Detect", class_list, default=class_list)
 
+st.sidebar.title('Alert Notifications')
+# Usage
+image_path = 'alert_image.jpg'
+# Get recipient's email as input
+recipient_email = st.sidebar.text_input('Enter your Email', 'example@gmail.com')
+# recipient_phone = '+919092112941'
+recipient_phone = st.sidebar.text_input('Enter Your Number','+919876543210')
 # Alert sound file
 alert_sound = 'alert.wav'
 
 # Main content
-use_webcam = st.checkbox('Use Webcam')
+
 use_ipcam = st.checkbox('Use IP cam')
 
 if use_ipcam:
@@ -71,10 +79,6 @@ if use_ipcam:
     stframe = st.empty()
     cap = cv2.VideoCapture(ipcam_address)
 
-elif use_webcam:
-    st.write("Webcam Detection:")
-    stframe = st.empty()
-    cap = cv2.VideoCapture(0)
 else:
     st.write("Upload a video for detection:")
     uploaded_file = st.file_uploader("Choose a file...", type=["mp4", "mov", "avi"])
@@ -131,10 +135,7 @@ def send_sms(message, recipient_phone_number):
         to=recipient_phone_number
     )
 
-# Usage
-image_path = 'alert_image.jpg'
-recipient_email = 'kiran160703kumar@gmail.com'
-recipient_phone = '+919092112941'
+
 
 
 def get_current_location(latitude,longitude):
@@ -228,7 +229,7 @@ while cap is not None and cap.isOpened():
                     cv2.imwrite('alert_image.jpg', frame)
 
                     # Trigger email alert
-                    # send_email(f"ALERT: Object Detected - {c}", f"Object Detected - {c} at {location_info}", image_path, recipient_email)
+                    send_email(f"ALERT: Object Detected - {c}", f"Object Detected - {c} at {location_info}", image_path, recipient_email)
 
                     # Trigger SMS alert
                     # send_sms(f"ALERT: Object Detected - {c} at {location_info}", recipient_phone)
