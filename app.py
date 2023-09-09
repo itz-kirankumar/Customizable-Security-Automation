@@ -38,13 +38,13 @@ model = YOLO('best.pt')
 
 # Set up Streamlit layout
 st.set_page_config(
-    page_title="Wildlife Security System",
-    page_icon="🦁",
+    page_title="Customizable Security Automation",
+    page_icon="shield.png",
     layout="wide"
 )
 
 # Streamlit UI
-st.title('Wildlife Security System')
+st.title('Customizable Security Automation')
 st.sidebar.title("Real-time Detection")
 st.sidebar.title('Settings')
 confidence_threshold = st.sidebar.slider('Confidence Threshold', min_value=0.0, max_value=1.0, value=0.5)
@@ -54,15 +54,15 @@ class_list = ["bear", "cat", "cheetah", "cow", "dog", "elephant", "fire", "goat"
                   "lion", "monkey", "panda", "rhino", "tiger", "zebra"]
 
 # Multi-select widget for object classes
-selected_classes = st.sidebar.multiselect("Select Object Classes to Detect", class_list, default=class_list)
+selected_classes = st.sidebar.multiselect("Customize your Security System", class_list, default=class_list)
 
 st.sidebar.title('Alert Notifications')
 # Usage
 image_path = 'alert_image.jpg'
 # Get recipient's email as input
-recipient_email = st.sidebar.text_input('Enter your Email', 'example@gmail.com')
+recipient_email = st.sidebar.text_input('Email Alert', 'example@gmail.com')
 # recipient_phone = '+919092112941'
-recipient_phone = st.sidebar.text_input('Enter Your Number','+919876543210')
+recipient_phone = st.sidebar.text_input('SMS Alert','+919876543210')
 # Alert sound file
 alert_sound = 'alert.wav'
 
