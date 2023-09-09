@@ -223,8 +223,8 @@ while cap is not None and cap.isOpened():
                     # Trigger an alert mechanism (print a message for demonstration)
                     st.warning(f"ALERT: Object Detected - {c}")
                     # Play alert sound using pygame
-                    pygame.mixer.music.load(alert_sound)
-                    pygame.mixer.music.play()
+                    # pygame.mixer.music.load(alert_sound)
+                    # pygame.mixer.music.play()
                     
                     cv2.imwrite('alert_image.jpg', frame)
 
