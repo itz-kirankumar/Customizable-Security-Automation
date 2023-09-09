@@ -16,7 +16,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import datetime
 from datetime import datetime
-pygame.mixer.init() 
+# pygame.mixer.init() 
 # from streamlit.components.v1 import ComponentBase, st_cached
 
 # class CameraComponent(ComponentBase):
